@@ -100,17 +100,17 @@ export function getWspUrl(orderData) {
   {
     Object.values(cartItems).forEach((item) => {
       const itemTotal = (item.offerPrice ? item.offerPrice * item.qty : item.price * item.qty).toFixed(2);
-      cartListforUrl += `%0A%0A - *(${item.qty})* ${item.title} --> _*$${itemTotal}*_`;
+      cartListforUrl += `%0A%0A - *(${item.qty})* ${item.title} --> _*S%2F${itemTotal}*_`;
     });
   }
 
-  const WSP_URL = `https://api.whatsapp.com/send/?phone=${N}&text=%2A${"Order"}%3A%2A%20${ID}%0A%0A%2A${"Client"}%3A%2A%20${name}%0A%0A%2A${"Phone"}%3A%2A%20${phone}%0A%0A%2A${
+  const WSP_URL = `https://api.whatsapp.com/send/?phone=${N}&text=%2A${"Pedido"}%3A%2A%20${ID}%0A%0A%2A${"Cliente"}%3A%2A%20${name}%0A%0A%2A${"Celular"}%3A%2A%20${phone}%0A%0A%2A${
     withDelivery ? "Dirección: " + "%3A%2A%20" + address + " %0A%0A%2A" : ""
   }${withDelivery ? "Distrito" + "%3A%2A%20" + city + "%0A%0A%2A" : ""}${
     withDelivery ? "Horario" + "%3A%2A%20" + schedule + "%0A%0A%2A" : ""
-  }${comment ? "Comentarios:" + "%3A%2A%20" + comment + "%0A%0A%2A" : ""}${"Items List"}%3A%2A${cartListforUrl}%0A%0A%2A${
-    withDelivery ? "Sub Total" + "%3A%2A%20$" + subTotal + " %0A%0A%2A" : ""
-  }${withDelivery ? "Gastos de envío" + "%3A%2A%20$" + shippingCost + " %0A%0A%2A" : ""}${"Total"}%3A%2A%20${total}%0A%0A`;
+  }${comment ? "Comentarios:" + "%3A%2A%20" + comment + "%0A%0A%2A" : ""}${"Lista productos"}%3A%2A${cartListforUrl}%0A%0A%2A${
+    withDelivery ? "Sub Total" + "%3A%2A%20S%2F" + subTotal + " %0A%0A%2A" : ""
+  }${withDelivery ? "Gastos de envío" + "%3A%2A%20S%2F" + shippingCost + " %0A%0A%2A" : ""}S%2F${"Total"}%3A%2A%20${total}%0A%0A`;
 
   return WSP_URL;
 }

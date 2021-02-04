@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useRecoilValue } from "recoil";
 import { cartLength } from "../../recoil/state";
 import Logo from "../others/Logo";
+import { Image } from "@chakra-ui/core";
 
 export default function Header({ page = "", showSidebar = false, setSidebar = false, setCart = () => {} }) {
   const [showSearch, setShowSearch] = useState(false);
@@ -21,7 +22,10 @@ export default function Header({ page = "", showSidebar = false, setSidebar = fa
                 <Box as={BiMenuAltLeft} size="38px" mr="2" />
               </button>
             )}
-            <Logo />
+            {/* <Logo /> */}
+            <Box w="150px" h="60px" bg="gray.300">
+              <Image size="100%" objectFit="cover" src={`/images/logo.webp`} />
+            </Box>
           </Flex>
 
           <div>

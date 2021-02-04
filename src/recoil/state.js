@@ -44,7 +44,7 @@ export const withDelivery = atom({
 
 export const deliveryFee = atom({
   key: "deliveryFee",
-  default: 5,
+  default: 3,
 });
 
 export const formState = atom({
